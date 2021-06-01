@@ -11,10 +11,32 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <style>
+            .main{
+                text-align: center;
+            }
+            .listOfTasks{
+                padding-top:2em;
+            }
+        </style>
     </head>
     <body>
-        <center><h1>Welcome to the ToDo app</h1></center>
-        
+        <div class="main">
+            <div class = "heading">
+                <h1>Welcome to the ToDo app</h1>
+            </div>
+            <div class = "inputTask">
+                <form action = "" method="POST"> {% csrf_token %}
+                    {{taskForm.title}}
+                    <input type="submit" value="To Do">
+                </form>
+            </div>
+            <div class = "listOfTasks">
+                {% for task in allTasks %}
+                    <p>{{task.title}}<p>
+                {% endfor %}
+            </div>
+        </div>
         <script src="" async defer></script>
     </body>
 </html>
