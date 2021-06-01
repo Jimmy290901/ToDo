@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import MyTasks
 from .forms import MyTaskForm
 # Create your views here.
@@ -8,12 +8,30 @@ def home(request):
     taskForm = MyTaskForm()
 
     if request.method == 'POST':
-        addTask = MyTaskForm(request.POST)
-        if addTask.is_valid():
-            addTask.save()
+        if 'todo_button' in request.POST:
+            addTask = MyTaskForm(request.POST)
+            if addTask.is_valid():
+                addTask.save()
+        else:
+            # print(request.POST)
+            deletedTask = MyTasks.objects.get(id=int(request.POST['id']))
+            deletedTask.delete()
 
     context = {
         'allTasks': allTasks,
         'taskForm': taskForm,
     }
     return render(request, 'tasks/home.html', context)
+
+def updateTask(request, task_id):
+    task = get_object_or_404(MyTasks, id = task_id)
+    taskForm = MyTaskForm(instance=task)
+    if request.method == "POST":
+        updatedTaskForm = MyTaskForm(request.POST, instance=task)
+        if updatedTaskForm.is_valid():
+            updatedTaskForm.save()
+        return redirect(home)
+    context = {
+        'task':taskForm,
+    }
+    return render(request, 'tasks/update.html', context)

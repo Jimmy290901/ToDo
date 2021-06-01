@@ -1,0 +1,10 @@
+{% extends "tasks/base.html" %}
+
+{% block centered_content %}
+    <form action ="" method = "POST"> {% csrf_token %}
+            {{task.title}} <br>
+            <label>Completed</label>
+            {{task.isComplete}} <br>
+            <input type="submit" value="save">
+    </form>
+{%  endblock %}
