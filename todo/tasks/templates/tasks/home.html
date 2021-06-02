@@ -25,7 +25,12 @@
                     <td>
                         <form action="" method="POST"> {% csrf_token %}
                             <input type="hidden" value="{{task.id}}" name="id">
-                            <input type="submit" value="delete" name="del_button">
+                            {% if task.isComplete == False %}
+                                <input type="submit" value="Done" name="completed">
+                            {% else %}
+                                <input type="submit" value="Undone" name="completed">
+                            {% endif %}
+                            <input type="submit" value="Delete" name="del_button">
                         </form>
                     </td>
                 </tr>

@@ -7,4 +7,5 @@ class MyTaskForm(forms.ModelForm):
     class Meta:
         model = MyTasks
         fields = ("__all__")
+
     

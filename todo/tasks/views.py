@@ -8,10 +8,15 @@ def home(request):
     taskForm = MyTaskForm()
 
     if request.method == 'POST':
+        # print(request.POST)
         if 'todo_button' in request.POST:
             addTask = MyTaskForm(request.POST)
             if addTask.is_valid():
                 addTask.save()
+        elif 'completed' in request.POST:
+            task = MyTasks.objects.get(id=int(request.POST['id']))
+            task.isComplete = not(task.isComplete)
+            task.save()
         else:
             # print(request.POST)
             deletedTask = MyTasks.objects.get(id=int(request.POST['id']))

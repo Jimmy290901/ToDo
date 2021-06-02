@@ -1,0 +1,18 @@
+body {
+    background-color: #30e3ca;
+}
+
+.main{
+    background-color: #e4f9f5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+.listOfTasks{
+    padding:2em;
+}
+td{
+    padding:0.5em;
+}
+input{
+    margin: 1em;
+}
