@@ -6,13 +6,46 @@ body {
     background-color: #e4f9f5;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
+    padding: 3em;
+    margin: 2em;
 }
+
+.inputTask {
+    margin: 3em;
+}
+
 .listOfTasks{
     padding:2em;
 }
+
+.listOfTasks tr{
+    background-color: #40514e;
+    border-color: chartreuse;
+}
+
+table{
+    border-spacing: 5em;
+}
+
 td{
     padding:0.5em;
+    text-align: center;
 }
+
+td a{
+    text-decoration: none;
+}
+
+
+
+td a:link, td a:visited{
+    color: #e4f9f5;
+}
+
+td a:hover{
+    color: aqua;
+}
+
 input{
     margin: 1em;
 }

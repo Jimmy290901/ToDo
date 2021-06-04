@@ -8,7 +8,7 @@ def home(request):
     taskForm = MyTaskForm()
 
     if request.method == 'POST':
-        # print(request.POST)
+        print(request.POST)
         if 'todo_button' in request.POST:
             addTask = MyTaskForm(request.POST)
             if addTask.is_valid():
@@ -21,7 +21,7 @@ def home(request):
             # print(request.POST)
             deletedTask = MyTasks.objects.get(id=int(request.POST['id']))
             deletedTask.delete()
-
+        return redirect(home)
     context = {
         'allTasks': allTasks,
         'taskForm': taskForm,
@@ -32,9 +32,11 @@ def updateTask(request, task_id):
     task = get_object_or_404(MyTasks, id = task_id)
     taskForm = MyTaskForm(instance=task)
     if request.method == "POST":
-        updatedTaskForm = MyTaskForm(request.POST, instance=task)
-        if updatedTaskForm.is_valid():
-            updatedTaskForm.save()
+        # print(request.POST)
+        if 'save' in request.POST:
+            updatedTaskForm = MyTaskForm(request.POST, instance=task)
+            if updatedTaskForm.is_valid():
+                updatedTaskForm.save()
         return redirect(home)
     context = {
         'task':taskForm,

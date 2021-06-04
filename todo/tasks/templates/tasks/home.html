@@ -7,12 +7,12 @@
     <div class = "inputTask">
         <form action = "" method="POST"> {% csrf_token %}
             {{taskForm.title}}
-            <input type="submit" value="To Do" name="todo_button">
+            <br>
+            <input type="submit" value="To Do" class = "btn btn-primary" name="todo_button">
         </form>
     </div>
-    <div class = "listOfTasks">
         <center>
-        <table>
+        <table class = "listOfTasks">
         {% for task in allTasks %}
                 <tr>
                     <td>
@@ -26,16 +26,15 @@
                         <form action="" method="POST"> {% csrf_token %}
                             <input type="hidden" value="{{task.id}}" name="id">
                             {% if task.isComplete == False %}
-                                <input type="submit" value="Done" name="completed">
+                                <input type="submit" value="Done" class="btn btn-success" name="completed">
                             {% else %}
-                                <input type="submit" value="Undone" name="completed">
+                                <input type="submit" value="Undone" class="btn btn-warning" name="completed">
                             {% endif %}
-                            <input type="submit" value="Delete" name="del_button">
+                            <input type="submit" value="Delete" class="btn btn-danger" name="del_button">
                         </form>
                     </td>
                 </tr>
         {% endfor %}
-        <table>
+        </table>
         </center>
-    </div>
 {% endblock %}
