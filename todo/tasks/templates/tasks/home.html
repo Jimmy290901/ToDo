@@ -26,7 +26,7 @@
                         <form action="" method="POST"> {% csrf_token %}
                             <input type="hidden" value="{{task.id}}" name="id">
                             {% if task.isComplete == False %}
-                                <input type="submit" value="Done" class="btn btn-success" name="completed">
+                                <input type="submit" value="&#10004;" class="btn btn-success" name="completed">
                             {% else %}
                                 <input type="submit" value="Undone" class="btn btn-warning" name="completed">
                             {% endif %}
