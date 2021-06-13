@@ -30,15 +30,18 @@ def home(request):
 
 def updateTask(request, task_id):
     task = get_object_or_404(MyTasks, id = task_id)
-    taskForm = MyTaskForm(instance=task)
     if request.method == "POST":
-        # print(request.POST)
+        print(request.POST)
         if 'save' in request.POST:
-            updatedTaskForm = MyTaskForm(request.POST, instance=task)
-            if updatedTaskForm.is_valid():
-                updatedTaskForm.save()
+            task.title = request.POST['title']
+            if 'isComplete' in request.POST:
+                if request.POST['isComplete'] == 'on':
+                    task.isComplete = True
+                else:
+                    task.isComplete = False
+            task.save()
         return redirect(home)
     context = {
-        'task':taskForm,
+        'task':task,
     }
     return render(request, 'tasks/update.html', context)
