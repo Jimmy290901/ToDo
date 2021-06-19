@@ -5,5 +5,5 @@ from tasks.views import home, updateTask
 
 urlpatterns = [
     path('',home),
-    path('update/<int:task_id>', updateTask, name='updateTask')
+    path('update/<int:task_id>', updateTask, name='updateTask'),
 ]

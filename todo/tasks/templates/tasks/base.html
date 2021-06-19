@@ -31,7 +31,13 @@
     </head>
     <body>
         <div class="main">
-            {% block centered_content%}
+
+            <div class="heading">
+                {% block heading %}
+                {% endblock %}
+            </div>
+
+            {% block content%}
             {% endblock %}
         </div>
         <script src="" async defer></script>

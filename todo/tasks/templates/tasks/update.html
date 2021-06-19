@@ -1,6 +1,10 @@
 {% extends "tasks/base.html" %}
 
-{% block centered_content %}
+{% block heading %}
+    <h1>Update Task</h1>
+{% endblock %}
+
+{% block content %}
     <form action ="" method = "POST"> {% csrf_token %}
             <input type="text" value="{{task.title}}" name="title"> <br>
             <label>Completed</label>

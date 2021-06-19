@@ -1,0 +1,41 @@
+{% extends "tasks/base.html" %}
+
+{% block heading %}
+    <h1>Sign Up</h1>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="POST"> {% csrf_token %}
+        <center>
+        <table>
+            <tr>
+                <td><label>Name:</label></td>
+                <td>{{signupForm.name}}</td>
+            <tr>
+            <tr>
+                <td><label>Email:</label></td>
+                <td>{{signupForm.email}}</td>
+            </tr>
+            <tr>
+                <td><label>Password:</label></td>
+                <td>{{signupForm.password}}</td>
+            </tr>
+        </table>
+        </center>
+        {% comment %} {{signupForm.as_p}}
+         {{signupForm.name}} <br>
+        {{signupForm.email}} <br>
+        {{signupForm.password}} <br> {% endcomment %}
+        <input type="submit" value="Submit">
+    </form>
+    <div class="error_message">
+        {% if err_msg != '' %}
+            <h4>{{err_msg}}</h4>
+        {% endif %}
+    </div>
+    {% comment %} <script>
+        if ("{{err_msg}}" != '') {
+            alert("{{err_msg}}");
+        }
+    </script> {% endcomment %}
+{% endblock %}
