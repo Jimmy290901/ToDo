@@ -6,6 +6,7 @@ class MyTaskForm(forms.ModelForm):
     
     class Meta:
         model = MyTasks
-        fields = ("__all__")
+        exclude = ['createdDate', 'isComplete']
 
-    
+    # def __init__(self, user_id):
+    #     self.user_id = user_id

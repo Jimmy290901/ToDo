@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 # Create your models here.
 
@@ -10,3 +11,7 @@ class User(models.Model):
     registerDate = models.DateTimeField(default=timezone.now) #no fill-up required
     email = models.EmailField(max_length=300)
     password = models.CharField(max_length=100)
+
+    def get_absolute_url(self):
+        return reverse("tasks", kwargs={"user_id": self.user_id})
+    
