@@ -19,6 +19,6 @@ class UserLoginForm(forms.ModelForm):
         model = User
         exclude = ['name', 'registerDate']
         widgets = {
-            'email': forms.EmailInput(attrs={'placeholder':'Email'}),
-            'password': forms.PasswordInput(attrs={'placeholder':'Password'}),
+            'email' : forms.EmailInput(attrs={'placeholder':'Email'}),
+            'password' : forms.PasswordInput(attrs={'placeholder':'Password'}),
         }

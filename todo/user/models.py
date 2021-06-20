@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
-
+from passlib.hash import pbkdf2_sha256
 # Create your models here.
 
 #To Do
@@ -14,4 +14,7 @@ class User(models.Model):
 
     def get_absolute_url(self):
         return reverse("tasks", kwargs={"user_id": self.user_id})
+    
+    def verify_password(self, givenPassword):
+        return pbkdf2_sha256.verify(givenPassword, self.password)
     

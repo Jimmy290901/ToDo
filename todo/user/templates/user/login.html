@@ -10,10 +10,9 @@
         {{loginForm.password}} <br>
         {% comment %} <input type="text" placeholder="Email" name="email"><br>
         <input type="password" placeholder="Password" name="password"><br> {% endcomment %}
-        <input type="submit" value="Login" class="btn btn-success" name="login"> <br>
-        <input type="submit" value="New User? Signup" class="btn btn-primary" name="signup">
+        <input type="submit" value="Login" class="btn btn-success"> <br>
     </form>
-
+    <a href='/signup'><button class="btn btn-primary" name="signup">New User? Signup</button></a>
     <div class="error_message">
         {% if err_msg != '' %}
             <h4>{{err_msg}}</h4>
